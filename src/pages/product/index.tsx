@@ -19,7 +19,7 @@ const ProductPage = () => {
     if (!isLogin) {
       push("/auth/login");
     }
-  }, []);
+  }, [isLogin, push]);
 
   useEffect(() => {
     fetch("/api/products")
@@ -36,8 +36,8 @@ const ProductPage = () => {
       <div className="flex justify-center items-center px-5 py-5 space-x-6">
         {products.map((product: productType) => (
           <div className="flex flex-col" key={product.id}>
-            <div><Image src={product.image} alt={product.name} width={300} height={200} /></div>
-            <div className="flex flex-col items-start">
+            {/* <div><Image src={product.image} alt={product.name} width={300} height={200} /></div> */}
+            <div className="flex flex-col items-center">
               <div className="flex font-bold text-2xl">{product.name}</div>
               <div className="flex font-bold text-2xl">{product.price.toLocaleString("id-ID", {style: "currency", currency: "IDR"})}</div>
             </div>
